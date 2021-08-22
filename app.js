@@ -22,8 +22,10 @@ bot.onText(/\/getStatus/, async (msg) => {
     {
         console.log('Farm Maintenance')
         bot.sendMessage(chatId, 'Farm Maintenance. Please wait your group')
-    } else {
+    } else if (plantsJson.status === 0) {
         showPlantsStatus(plantsJson, chatId)
+    } else {
+        console.log('Error')
     }
 });
 
