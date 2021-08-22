@@ -25,7 +25,7 @@ bot.onText(/\/getStatus/, async (msg) => {
     } else if (plantsJson.status === 0) {
         showPlantsStatus(plantsJson, chatId)
     } else {
-        console.log('Error')
+        bot.sendMessage(chatId, `Error, status: ${plantsJson.status}`)
     }
 });
 
