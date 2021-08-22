@@ -6,6 +6,8 @@ const PVU_PLANTS_STATUS_LINK = 'https://backend-farm.plantvsundead.com/farms?lim
 const token = '1954705823:AAEQKOd3875K9obwfmpO3xtmoLhui9A-MCs';
 const bot = new TelegramBot(token, {polling: true});
 
+console.log('Bot Start')
+
 bot.onText(/\/start/, (msg) => {
     const chatId = msg.chat.id;
 
