@@ -500,7 +500,7 @@ bot.onText(/\/moreInfo/, async (msg) => {
     } else if (plantsJson.status === 0) {
         showPlantsStatus(plantsJson, chatId)
     } else {
-        bot.sendMessage(chatId, `Error, status: ${plantsJson.status}`)
+        bot.sendMessage(chatId, `Ошибка, код: ${plantsJson.status}`)
     }
 });
 
@@ -514,7 +514,7 @@ bot.onText(/\/status/, async (msg) => {
     } else if (plantsJson.status === 0) {
         showGlobalStatus(plantsJson, chatId)
     } else {
-        bot.sendMessage(chatId, `Error, status: ${plantsJson.status}`)
+        bot.sendMessage(chatId, `Ошибка, код: ${plantsJson.status}`)
     }
 });
 
@@ -528,7 +528,7 @@ bot.onText(/\/watering/, async (msg) => {
     } else if (plantsJson.status === 0) {
         startWatering(plantsNeedWater, chatId)
     } else {
-        bot.sendMessage(chatId, `Error, status: ${plantsJson.status}`)
+        bot.sendMessage(chatId, `Ошибка, код: ${plantsJson.status}`)
     }
 });
 
@@ -542,7 +542,7 @@ bot.onText(/\/scarecrow/, async (msg) => {
     } else if (plantsJson.status === 0) {
         useScareCrow(plantsHasCrow, chatId)
     } else {
-        bot.sendMessage(chatId, `Error, status: ${plantsJson.status}`)
+        bot.sendMessage(chatId, `Ошибка, код: ${plantsJson.status}`)
     }
 });
 
@@ -609,6 +609,8 @@ const startWatering = async (plantsNeedWater, chatId) => {
                         bot.sendMessage(chatId, `${count} полив растения "${plantsNeedWater[i]._id}" сделан успешно`)
                     } else if (json.status === 20) {
                         bot.sendMessage(chatId, `Полив не требуеться`)
+                    } else if (json.status === 444) {
+                        bot.sendMessage(chatId, `Не в вайт листе, ожидайте своей группы`)
                     } else {
                         bot.sendMessage(chatId, `Ошибка, код: ${json.status}`)
                     }
@@ -619,7 +621,6 @@ const startWatering = async (plantsNeedWater, chatId) => {
         }
     }
     plantsNeedWater = []
-    bot.sendMessage(chatId, `Полив растений завершен`)
 }
 
 const useScareCrow = async (plantsHasCrow, chatId) => {
@@ -633,34 +634,30 @@ const useScareCrow = async (plantsHasCrow, chatId) => {
                 "validate": "default"
             }
         }
-
-        try {
-            await fetch(PVU_WATERING_LINK, {
-                method: 'post',
-                body: JSON.stringify(body),
-                headers: {
-                    'authorization': 'Bearer Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwdWJsaWNBZGRyZXNzIjoiMHg1N2I1MTk0NjhhMjUzYzhhZmI3ZDUyZTc0ZTc1NzJmMjlmMTk0NzU4IiwibG9naW5UaW1lIjoxNjI5NTMwNjAyMzM5LCJjcmVhdGVEYXRlIjoiMjAyMS0wOC0xNSAwOTozNzoxMyIsImlhdCI6MTYyOTUzMDYwMn0.EO_tnfvY6vZXkMxHCcu8UntXmNAq3RbhZ2t1UFi292s',
-                    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.159 Safari/537.36',
-                    'origin': 'https://marketplace.plantvsundead.com',
-                    'Accept': '*/*',
-                    'Content-Type': 'application/json',
-                    'Content-Length': '121'
-                }
-            }).then(res => res.json()).then(json => {
-                if (json.status === 0) {
-                    bot.sendMessage(chatId, `Ворона с растения "${plantsHasCrow[i]._id}" успешно прогнана`)
-                } else if (json.status === 17) {
-                    bot.sendMessage(chatId, `Проганять ворону не требуеться`)
-                } else {
-                    bot.sendMessage(chatId, `Ошибка, код: ${json.status}`)
-                }
-            })
-        } catch (e) {
-            console.log(e)
-        }
+        await fetch(PVU_WATERING_LINK, {
+            method: 'post',
+            body: JSON.stringify(body),
+            headers: {
+                'authorization': 'Bearer Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwdWJsaWNBZGRyZXNzIjoiMHg1N2I1MTk0NjhhMjUzYzhhZmI3ZDUyZTc0ZTc1NzJmMjlmMTk0NzU4IiwibG9naW5UaW1lIjoxNjI5NTMwNjAyMzM5LCJjcmVhdGVEYXRlIjoiMjAyMS0wOC0xNSAwOTozNzoxMyIsImlhdCI6MTYyOTUzMDYwMn0.EO_tnfvY6vZXkMxHCcu8UntXmNAq3RbhZ2t1UFi292s',
+                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.159 Safari/537.36',
+                'origin': 'https://marketplace.plantvsundead.com',
+                'Accept': '*/*',
+                'Content-Type': 'application/json',
+                'Content-Length': '121'
+            }
+        }).then(res => res.json()).then(json => {
+            if (json.status === 0) {
+                bot.sendMessage(chatId, `Ворона с растения "${plantsHasCrow[i]._id}" успешно прогнана`)
+            } else if (json.status === 17) {
+                bot.sendMessage(chatId, `Проганять ворону не требуеться`)
+            } else if (json.status === 444) {
+                bot.sendMessage(chatId, `Не в вайт листе, ожидайте своей группы`)
+            } else {
+                bot.sendMessage(chatId, `Ошибка, код: ${json.status}`)
+            }
+        })
     }
     plantsHasCrow = []
-    bot.sendMessage(chatId, `Все вороны согнаны`)
 }
 
 const showGlobalStatus = (plantJson, chatId) => {
