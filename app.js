@@ -46,6 +46,7 @@ const testResponse = {
             },
             "isTempPlant": true,
             "stage": "farming",
+            "hasCrow": "true",
             "ownerId": "0x57b519468a253c8afb7d52e74e7572f29f194758",
             "landId": 0,
             "plantId": 0,
@@ -66,12 +67,12 @@ const testResponse = {
                     "id": 3,
                     "type": "WATER",
                     "duration": 0,
-                    "endTime": "2021-08-28T21:26:18.607Z",
-                    "startTime": "2021-08-27T21:26:18.607Z"
+                    "endTime": "2021-08-29T21:26:18.607Z",
+                    "startTime": "2021-08-28T21:26:18.607Z"
                 }
             ],
             "createdAt": "2021-08-23T17:18:19.193Z",
-            "updatedAt": "2021-08-28T10:48:59.193Z",
+            "updatedAt": "2021-08-29T04:42:35.769Z",
             "__v": 0,
             "harvestTime": "2021-08-29T20:55:00.310Z",
             "rate": {
@@ -84,161 +85,7 @@ const testResponse = {
             "hasSeed": false,
             "pausedTime": null,
             "inGreenhouse": false,
-            "count": 28,
-            "totalHarvest": 0,
-            "totalExtraHarvest": 0
-        },
-        {
-            "_id": "6126b124a354e200192ff2c5",
-            "plant": {
-                "farmConfig": {
-                    "le": 250,
-                    "hours": 72
-                },
-                "sunflowerId": 1,
-                "type": 1,
-                "iconUrl": "https://pvu-static.s3.ap-southeast-1.amazonaws.com/farms/sapling.svg",
-                "synergy": {}
-            },
-            "land": {
-                "elements": {
-                    "fire": 0,
-                    "water": 0,
-                    "ice": 0,
-                    "wind": 0,
-                    "electro": 0,
-                    "parasite": 0,
-                    "light": 0,
-                    "dark": 0,
-                    "metal": 0
-                },
-                "capacity": {
-                    "plant": 5,
-                    "motherTree": 1
-                },
-                "landId": 0,
-                "x": 0,
-                "y": 0,
-                "totalOfElements": 0,
-                "rarity": 0
-            },
-            "isTempPlant": true,
-            "stage": "farming",
-            "ownerId": "0x57b519468a253c8afb7d52e74e7572f29f194758",
-            "landId": 0,
-            "plantId": 0,
-            "plantType": 1,
-            "activeTools": [
-                {
-                    "count": 1,
-                    "_id": "6126b124a354e200192ff2c6",
-                    "id": 1,
-                    "type": "POT",
-                    "duration": 10,
-                    "endTime": "2021-09-04T21:07:55.125Z",
-                    "startTime": "2021-08-25T21:07:55.125Z"
-                },
-                {
-                    "count": 2,
-                    "_id": "6126b124a354e200192ff2c8",
-                    "id": 3,
-                    "type": "WATER",
-                    "duration": 0,
-                    "endTime": "2021-08-28T20:07:55.416Z",
-                    "startTime": "2021-08-27T21:07:55.416Z"
-                }
-            ],
-            "createdAt": "2021-08-25T21:07:48.338Z",
-            "updatedAt": "2021-08-28T10:48:52.182Z",
-            "__v": 0,
-            "harvestTime": "2021-08-28T21:07:55.416Z",
-            "rate": {
-                "le": 250,
-                "hours": 72
-            },
-            "startTime": "2021-08-25T21:07:55.416Z",
-            "hasSynergy": false,
-            "needWater": true,
-            "hasSeed": false,
-            "inGreenhouse": false,
-            "count": 85,
-            "totalHarvest": 0,
-            "totalExtraHarvest": 0
-        },
-        {
-            "_id": "6126b636e2a40b0012b0f95b",
-            "plant": {
-                "farmConfig": {
-                    "le": 250,
-                    "hours": 72
-                },
-                "sunflowerId": 1,
-                "type": 1,
-                "iconUrl": "https://pvu-static.s3.ap-southeast-1.amazonaws.com/farms/sapling.svg",
-                "synergy": {}
-            },
-            "land": {
-                "elements": {
-                    "fire": 0,
-                    "water": 0,
-                    "ice": 0,
-                    "wind": 0,
-                    "electro": 0,
-                    "parasite": 0,
-                    "light": 0,
-                    "dark": 0,
-                    "metal": 0
-                },
-                "capacity": {
-                    "plant": 5,
-                    "motherTree": 1
-                },
-                "landId": 0,
-                "x": 0,
-                "y": 0,
-                "totalOfElements": 0,
-                "rarity": 0
-            },
-            "isTempPlant": true,
-            "stage": "farming",
-            "ownerId": "0x57b519468a253c8afb7d52e74e7572f29f194758",
-            "landId": 0,
-            "plantId": 0,
-            "plantType": 1,
-            "activeTools": [
-                {
-                    "count": 1,
-                    "_id": "6126b636e2a40b0012b0f95c",
-                    "id": 1,
-                    "type": "POT",
-                    "duration": 10,
-                    "endTime": "2021-09-04T21:29:31.568Z",
-                    "startTime": "2021-08-25T21:29:31.568Z"
-                },
-                {
-                    "count": 2,
-                    "_id": "6126b636e2a40b0012b0f95e",
-                    "id": 3,
-                    "type": "WATER",
-                    "duration": 0,
-                    "endTime": "2021-08-28T21:29:31.857Z",
-                    "startTime": "2021-08-27T20:29:31.857Z"
-                }
-            ],
-            "createdAt": "2021-08-25T21:29:26.194Z",
-            "updatedAt": "2021-08-28T10:48:47.007Z",
-            "__v": 0,
-            "harvestTime": "2021-08-28T21:29:31.857Z",
-            "rate": {
-                "le": 250,
-                "hours": 72
-            },
-            "startTime": "2021-08-25T21:29:31.857Z",
-            "hasSynergy": false,
-            "needWater": true,
-            "hasSeed": false,
-            "inGreenhouse": false,
-            "count": 168,
+            "count": 57,
             "totalHarvest": 0,
             "totalExtraHarvest": 0
         },
@@ -298,14 +145,14 @@ const testResponse = {
                     "id": 3,
                     "type": "WATER",
                     "duration": 0,
-                    "endTime": "2021-08-28T17:41:11.515Z",
-                    "startTime": "2021-08-27T16:41:11.515Z"
+                    "endTime": "2021-08-29T18:41:11.515Z",
+                    "startTime": "2021-08-28T17:41:11.515Z"
                 }
             ],
             "createdAt": "2021-08-26T16:41:04.057Z",
-            "updatedAt": "2021-08-27T18:52:56.671Z",
+            "updatedAt": "2021-08-29T10:41:25.521Z",
             "__v": 0,
-            "harvestTime": "2021-08-29T16:41:11.515Z",
+            "harvestTime": "2021-08-29T17:32:59.559Z",
             "rate": {
                 "le": 250,
                 "hours": 72
@@ -314,8 +161,9 @@ const testResponse = {
             "hasSynergy": false,
             "needWater": false,
             "hasSeed": false,
+            "pausedTime": null,
             "inGreenhouse": false,
-            "count": 187,
+            "count": 6,
             "totalHarvest": 0,
             "totalExtraHarvest": 0
         },
@@ -375,12 +223,12 @@ const testResponse = {
                     "id": 3,
                     "type": "WATER",
                     "duration": 0,
-                    "endTime": "2021-08-29T10:51:32.703Z",
-                    "startTime": "2021-08-28T10:51:32.703Z"
+                    "endTime": "2021-08-30T11:51:32.703Z",
+                    "startTime": "2021-08-29T10:51:32.703Z"
                 }
             ],
             "createdAt": "2021-08-28T10:51:16.300Z",
-            "updatedAt": "2021-08-28T10:51:39.659Z",
+            "updatedAt": "2021-08-29T11:01:32.675Z",
             "__v": 0,
             "harvestTime": "2021-08-31T10:51:32.703Z",
             "rate": {
@@ -392,7 +240,7 @@ const testResponse = {
             "needWater": false,
             "hasSeed": false,
             "inGreenhouse": false,
-            "count": 32,
+            "count": 108,
             "totalHarvest": 0,
             "totalExtraHarvest": 0
         },
@@ -452,12 +300,12 @@ const testResponse = {
                     "id": 3,
                     "type": "WATER",
                     "duration": 0,
-                    "endTime": "2021-08-29T10:51:29.136Z",
-                    "startTime": "2021-08-28T10:51:29.136Z"
+                    "endTime": "2021-08-30T09:51:29.136Z",
+                    "startTime": "2021-08-29T10:51:29.136Z"
                 }
             ],
             "createdAt": "2021-08-28T10:51:17.855Z",
-            "updatedAt": "2021-08-28T10:51:44.273Z",
+            "updatedAt": "2021-08-29T11:01:36.390Z",
             "__v": 0,
             "harvestTime": "2021-08-31T10:51:29.136Z",
             "rate": {
@@ -469,7 +317,161 @@ const testResponse = {
             "needWater": false,
             "hasSeed": false,
             "inGreenhouse": false,
-            "count": 107,
+            "count": 189,
+            "totalHarvest": 0,
+            "totalExtraHarvest": 0
+        },
+        {
+            "_id": "612b106a05be5b00094b0304",
+            "plant": {
+                "farmConfig": {
+                    "le": 250,
+                    "hours": 72
+                },
+                "sunflowerId": 1,
+                "type": 1,
+                "iconUrl": "https://pvu-static.s3.ap-southeast-1.amazonaws.com/farms/sapling.svg",
+                "synergy": {}
+            },
+            "land": {
+                "elements": {
+                    "fire": 0,
+                    "water": 0,
+                    "ice": 0,
+                    "wind": 0,
+                    "electro": 0,
+                    "parasite": 0,
+                    "light": 0,
+                    "dark": 0,
+                    "metal": 0
+                },
+                "capacity": {
+                    "plant": 5,
+                    "motherTree": 1
+                },
+                "landId": 0,
+                "x": 0,
+                "y": 0,
+                "totalOfElements": 0,
+                "rarity": 0
+            },
+            "isTempPlant": true,
+            "stage": "farming",
+            "ownerId": "0x57b519468a253c8afb7d52e74e7572f29f194758",
+            "landId": 0,
+            "plantId": 0,
+            "plantType": 1,
+            "activeTools": [
+                {
+                    "count": 1,
+                    "_id": "612b106a05be5b00094b0305",
+                    "id": 1,
+                    "type": "POT",
+                    "duration": 10,
+                    "endTime": "2021-09-08T04:43:33.809Z",
+                    "startTime": "2021-08-29T04:43:33.809Z"
+                },
+                {
+                    "count": 2,
+                    "_id": "612b106a05be5b00094b0307",
+                    "id": 3,
+                    "type": "WATER",
+                    "duration": 0,
+                    "endTime": "2021-08-30T04:43:34.006Z",
+                    "startTime": "2021-08-29T04:43:34.006Z"
+                }
+            ],
+            "createdAt": "2021-08-29T04:43:22.012Z",
+            "updatedAt": "2021-08-29T04:43:39.962Z",
+            "__v": 0,
+            "harvestTime": "2021-09-01T04:43:34.006Z",
+            "rate": {
+                "le": 250,
+                "hours": 72
+            },
+            "startTime": "2021-08-29T04:43:34.006Z",
+            "hasSynergy": false,
+            "needWater": false,
+            "hasSeed": false,
+            "inGreenhouse": false,
+            "count": 185,
+            "totalHarvest": 0,
+            "totalExtraHarvest": 0
+        },
+        {
+            "_id": "612b106c29c46d00084b40e1",
+            "plant": {
+                "farmConfig": {
+                    "le": 250,
+                    "hours": 72
+                },
+                "sunflowerId": 1,
+                "type": 1,
+                "iconUrl": "https://pvu-static.s3.ap-southeast-1.amazonaws.com/farms/sapling.svg",
+                "synergy": {}
+            },
+            "land": {
+                "elements": {
+                    "fire": 0,
+                    "water": 0,
+                    "ice": 0,
+                    "wind": 0,
+                    "electro": 0,
+                    "parasite": 0,
+                    "light": 0,
+                    "dark": 0,
+                    "metal": 0
+                },
+                "capacity": {
+                    "plant": 5,
+                    "motherTree": 1
+                },
+                "landId": 0,
+                "x": 0,
+                "y": 0,
+                "totalOfElements": 0,
+                "rarity": 0
+            },
+            "isTempPlant": true,
+            "stage": "farming",
+            "ownerId": "0x57b519468a253c8afb7d52e74e7572f29f194758",
+            "landId": 0,
+            "plantId": 0,
+            "plantType": 1,
+            "activeTools": [
+                {
+                    "count": 1,
+                    "_id": "612b106c29c46d00084b40e2",
+                    "id": 1,
+                    "type": "POT",
+                    "duration": 10,
+                    "endTime": "2021-09-08T04:43:42.849Z",
+                    "startTime": "2021-08-29T04:43:42.849Z"
+                },
+                {
+                    "count": 2,
+                    "_id": "612b106c29c46d00084b40e4",
+                    "id": 3,
+                    "type": "WATER",
+                    "duration": 0,
+                    "endTime": "2021-08-30T04:43:42.912Z",
+                    "startTime": "2021-08-29T04:43:42.912Z"
+                }
+            ],
+            "createdAt": "2021-08-29T04:43:24.047Z",
+            "updatedAt": "2021-08-29T04:43:46.949Z",
+            "__v": 0,
+            "harvestTime": "2021-09-01T04:43:42.912Z",
+            "rate": {
+                "le": 250,
+                "hours": 72
+            },
+            "startTime": "2021-08-29T04:43:42.912Z",
+            "hasSynergy": false,
+            "needWater": false,
+            "hasSeed": false,
+            "inGreenhouse": false,
+            "count": 75,
             "totalHarvest": 0,
             "totalExtraHarvest": 0
         }
@@ -478,6 +480,7 @@ const testResponse = {
 }
 
 let plantsNeedWater = []
+let plantsHasCrow = []
 
 console.log('Bot Start')
 
@@ -491,8 +494,7 @@ bot.onText(/\/moreInfo/, async (msg) => {
     const chatId = msg.chat.id;
 
     const plantsJson = await getPlantsStatus()
-    if (plantsJson.status === 444)
-    {
+    if (plantsJson.status === 444) {
         console.log('Farm Maintenance')
         bot.sendMessage(chatId, 'Farm Maintenance. Please wait your group')
     } else if (plantsJson.status === 0) {
@@ -506,8 +508,7 @@ bot.onText(/\/status/, async (msg) => {
     const chatId = msg.chat.id;
 
     const plantsJson = await getPlantsStatus()
-    if (plantsJson.status === 444)
-    {
+    if (plantsJson.status === 444) {
         console.log('Farm Maintenance')
         bot.sendMessage(chatId, 'Farm Maintenance. Please wait your group')
     } else if (plantsJson.status === 0) {
@@ -521,12 +522,25 @@ bot.onText(/\/watering/, async (msg) => {
     const chatId = msg.chat.id;
 
     const plantsJson = await getPlantsStatus()
-    if (plantsJson.status === 444)
-    {
+    if (plantsJson.status === 444) {
         console.log('Farm Maintenance')
         bot.sendMessage(chatId, 'Farm Maintenance. Please wait your group')
     } else if (plantsJson.status === 0) {
         startWatering(plantsNeedWater, chatId)
+    } else {
+        bot.sendMessage(chatId, `Error, status: ${plantsJson.status}`)
+    }
+});
+
+bot.onText(/\/scarecrow/, async (msg) => {
+    const chatId = msg.chat.id;
+
+    const plantsJson = await getPlantsStatus()
+    if (plantsJson.status === 444) {
+        console.log('Farm Maintenance')
+        bot.sendMessage(chatId, 'Farm Maintenance. Please wait your group')
+    } else if (plantsJson.status === 0) {
+        useScareCrow(plantsHasCrow, chatId)
     } else {
         bot.sendMessage(chatId, `Error, status: ${plantsJson.status}`)
     }
@@ -558,7 +572,7 @@ const showPlantsStatus = (plantsJson, chatId) => {
 
         const waterTool = plant.activeTools.find(obj => obj.type === "WATER")
 
-        bot.sendMessage(chatId, `Номер растения: ${(index + 1)}\nID растения: ${plant._id}\n${plant.needWater ? 'Растение нужно полить!!!' : 'Растению не требуеться полив'}\n${waterTool !== undefined && ('Осталось времени до полива: ' + diffTimeCalculation(waterTool.endTime))}\nОсталось времени до сбора: ${diffTimeCalculation(plant.harvestTime)}\n${plant.hasCrow !== undefined ? 'На растении сидит ворона, нужно согнать!!!!' : 'На растении нету вороны'}`)
+        bot.sendMessage(chatId, `Номер растения: ${(index + 1)}\nID растения: ${plant._id}\n${plant.needWater ? 'Растение нужно полить!!!' : 'Растению не требуеться полив'}\n${waterTool !== undefined ? ('Осталось времени до полива: ' + diffTimeCalculation(waterTool.endTime)) : ''}\nОсталось времени до сбора: ${diffTimeCalculation(plant.harvestTime)}\n${plant.hasCrow !== undefined ? 'На растении сидит ворона, нужно согнать!!!!' : 'На растении нету вороны'}`)
     })
 }
 
@@ -566,9 +580,13 @@ const startWatering = async (plantsNeedWater, chatId) => {
     for (let i = 0; i < plantsNeedWater.length; i++) {
         const body = {
             "farmId": `${plantsNeedWater[i]._id}`,
-            "toolId":3,
-            "token":{"challenge":"default","seccode":"default","validate":"default"}
-        };
+            "toolId": 3,
+            "token": {
+                "challenge": "default",
+                "seccode": "default",
+                "validate": "default"
+            }
+        }
 
         for (let i = 0; i < 2; i++) {
             let count = 0;
@@ -576,18 +594,23 @@ const startWatering = async (plantsNeedWater, chatId) => {
             try {
                 await fetch(PVU_WATERING_LINK, {
                     method: 'post',
-                    body: body,
+                    body: JSON.stringify(body),
                     headers: {
                         'authorization': 'Bearer Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwdWJsaWNBZGRyZXNzIjoiMHg1N2I1MTk0NjhhMjUzYzhhZmI3ZDUyZTc0ZTc1NzJmMjlmMTk0NzU4IiwibG9naW5UaW1lIjoxNjI5NTMwNjAyMzM5LCJjcmVhdGVEYXRlIjoiMjAyMS0wOC0xNSAwOTozNzoxMyIsImlhdCI6MTYyOTUzMDYwMn0.EO_tnfvY6vZXkMxHCcu8UntXmNAq3RbhZ2t1UFi292s',
-                        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.159 Safari/537.36',
-                        'origin': 'https://marketplace.plantvsundead.com'
+                        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.159 Safari/537.36',
+                        'origin': 'https://marketplace.plantvsundead.com',
+                        'Accept': '*/*',
+                        'Content-Type': 'application/json',
+                        'Content-Length': '121'
                     }
-                }).then(res => {
-                    if (res.status === 0) {
+                }).then(res => res.json()).then(json => {
+                    if (json.status === 0) {
                         count++
                         bot.sendMessage(chatId, `${count} полив растения "${plantsNeedWater[i]._id}" сделан успешно`)
-                    } else if (res.status === 20) {
+                    } else if (json.status === 20) {
                         bot.sendMessage(chatId, `Полив не требуеться`)
+                    } else {
+                        bot.sendMessage(chatId, `Ошибка, код: ${json.status}`)
                     }
                 })
             } catch (e) {
@@ -597,6 +620,47 @@ const startWatering = async (plantsNeedWater, chatId) => {
     }
     plantsNeedWater = []
     bot.sendMessage(chatId, `Полив растений завершен`)
+}
+
+const useScareCrow = async (plantsHasCrow, chatId) => {
+    for (let i = 0; i < plantsHasCrow.length; i++) {
+        const body = {
+            "farmId": `${plantsHasCrow[i]._id}`,
+            "toolId": 4,
+            "token": {
+                "challenge": "default",
+                "seccode": "default",
+                "validate": "default"
+            }
+        }
+
+        try {
+            await fetch(PVU_WATERING_LINK, {
+                method: 'post',
+                body: JSON.stringify(body),
+                headers: {
+                    'authorization': 'Bearer Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwdWJsaWNBZGRyZXNzIjoiMHg1N2I1MTk0NjhhMjUzYzhhZmI3ZDUyZTc0ZTc1NzJmMjlmMTk0NzU4IiwibG9naW5UaW1lIjoxNjI5NTMwNjAyMzM5LCJjcmVhdGVEYXRlIjoiMjAyMS0wOC0xNSAwOTozNzoxMyIsImlhdCI6MTYyOTUzMDYwMn0.EO_tnfvY6vZXkMxHCcu8UntXmNAq3RbhZ2t1UFi292s',
+                    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.159 Safari/537.36',
+                    'origin': 'https://marketplace.plantvsundead.com',
+                    'Accept': '*/*',
+                    'Content-Type': 'application/json',
+                    'Content-Length': '121'
+                }
+            }).then(res => res.json()).then(json => {
+                if (json.status === 0) {
+                    bot.sendMessage(chatId, `Ворона с растения "${plantsHasCrow[i]._id}" успешно прогнана`)
+                } else if (json.status === 17) {
+                    bot.sendMessage(chatId, `Проганять ворону не требуеться`)
+                } else {
+                    bot.sendMessage(chatId, `Ошибка, код: ${json.status}`)
+                }
+            })
+        } catch (e) {
+            console.log(e)
+        }
+    }
+    plantsHasCrow = []
+    bot.sendMessage(chatId, `Все вороны согнаны`)
 }
 
 const showGlobalStatus = (plantJson, chatId) => {
@@ -610,12 +674,15 @@ const showGlobalStatus = (plantJson, chatId) => {
             needWater++
             plantsNeedWater.push(plant)
         }
-        if (plant.hasCrow !== undefined)
+        if (plant.hasCrow !== undefined) {
             hasCrow++
-        if (plant.stage !== 'farming')
+            plantsHasCrow.push(plant)
+        }
+        if (plant.stage !== 'farming' && plant.synergy !== 'paused') {
             needHarvest++
+        }
     })
 
-    bot.sendMessage(chatId, `Нужно полить: ${needWater}, ${needWater !== 0 && 'Полить /watering'}\nС воронами: ${hasCrow}\nГотовых к сбору: ${needHarvest}\n\nДля подробной информации выполните команду /moreInfo`)
+    bot.sendMessage(chatId, `Нужно полить: ${needWater}${needWater !== 0 ? ', Полить /watering' : ''}\nС воронами: ${hasCrow}${hasCrow !== 0 ? ', Согнать /scarecrow' : ''}\nГотовых к сбору: ${needHarvest}\n\nДля подробной информации выполните команду /moreInfo`)
 }
 
