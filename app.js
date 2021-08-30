@@ -498,9 +498,8 @@ bot.onText(/\/start/, (msg) => {
 bot.onText(/\/account1/, (msg) => {
     const chatId = msg.chat.id;
 
-    currentAccount = accountsTokens[0]
-
     if (currentAccount !== accountsTokens[0])
+        currentAccount = accountsTokens[0]
         bot.sendMessage(chatId, 'Вы переключились на 1 аккаунт');
     else
         bot.sendMessage(chatId, 'Вы уже находитесь в аккаунте 1');
@@ -509,9 +508,8 @@ bot.onText(/\/account1/, (msg) => {
 bot.onText(/\/account2/, (msg) => {
     const chatId = msg.chat.id;
 
-    currentAccount = accountsTokens[1]
-
     if (currentAccount !== accountsTokens[1])
+        currentAccount = accountsTokens[1]
         bot.sendMessage(chatId, 'Вы переключились на 2 аккаунт');
     else
         bot.sendMessage(chatId, 'Вы уже находитесь в аккаунте 2');
