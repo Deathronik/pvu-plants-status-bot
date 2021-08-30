@@ -2,6 +2,11 @@ import fetch from "node-fetch";
 import moment from "moment";
 import TelegramBot from "node-telegram-bot-api"
 
+const accountsTokens = ['Bearer Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwdWJsaWNBZGRyZXNzIjoiMHg1N2I1MTk0NjhhMjUzYzhhZmI3ZDUyZTc0ZTc1NzJmMjlmMTk0NzU4IiwibG9naW5UaW1lIjoxNjI5NTMwNjAyMzM5LCJjcmVhdGVEYXRlIjoiMjAyMS0wOC0xNSAwOTozNzoxMyIsImlhdCI6MTYyOTUzMDYwMn0.EO_tnfvY6vZXkMxHCcu8UntXmNAq3RbhZ2t1UFi292s',
+    'Bearer Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwdWJsaWNBZGRyZXNzIjoiMHgwYTIzMDM3OTBmNDZhNmIxOTc3ZTliNWUzYjE3YWJkYjUxNWNkMmY2IiwibG9naW5UaW1lIjoxNjI5MDQyNDM5ODE0LCJjcmVhdGVEYXRlIjoiMjAyMS0wOC0xNSAxNTo0NzoxNSIsImlhdCI6MTYyOTA0MjQzOX0.hQoXHGHqmc5v0LsuWq7Bz5aTAJsG2TYDm_GCk_i6ZYc',]
+
+let currentAccount = accountsTokens[0]
+
 const PVU_PLANTS_STATUS_LINK = 'https://backend-farm.plantvsundead.com/farms?limit=10&offset=0'
 const PVU_WATERING_LINK = 'https://backend-farm-stg.plantvsundead.com/farms/apply-tool'
 const token = '1954705823:AAEQKOd3875K9obwfmpO3xtmoLhui9A-MCs';
@@ -490,6 +495,22 @@ bot.onText(/\/start/, (msg) => {
     bot.sendMessage(chatId, 'Hi, I`m here to help keep an eye on your farm');
 });
 
+bot.onText(/\/account1/, (msg) => {
+    const chatId = msg.chat.id;
+
+    currentAccount = accountsTokens[0]
+
+    bot.sendMessage(chatId, 'Вы переключились на 1 аккаунт');
+});
+
+bot.onText(/\/account2/, (msg) => {
+    const chatId = msg.chat.id;
+
+    currentAccount = accountsTokens[1]
+
+    bot.sendMessage(chatId, 'Вы переключились на 2 аккаунт');
+});
+
 bot.onText(/\/moreInfo/, async (msg) => {
     const chatId = msg.chat.id;
 
@@ -506,6 +527,9 @@ bot.onText(/\/moreInfo/, async (msg) => {
 
 bot.onText(/\/status/, async (msg) => {
     const chatId = msg.chat.id;
+
+    plantsNeedWater = []
+    plantsHasCrow = []
 
     const plantsJson = await getPlantsStatus()
     if (plantsJson.status === 444) {
@@ -549,7 +573,7 @@ bot.onText(/\/scarecrow/, async (msg) => {
 const getPlantsStatus = async () => {
     const response = await fetch(PVU_PLANTS_STATUS_LINK, {
         headers: {
-            'authorization': 'Bearer Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwdWJsaWNBZGRyZXNzIjoiMHg1N2I1MTk0NjhhMjUzYzhhZmI3ZDUyZTc0ZTc1NzJmMjlmMTk0NzU4IiwibG9naW5UaW1lIjoxNjI5NTMwNjAyMzM5LCJjcmVhdGVEYXRlIjoiMjAyMS0wOC0xNSAwOTozNzoxMyIsImlhdCI6MTYyOTUzMDYwMn0.EO_tnfvY6vZXkMxHCcu8UntXmNAq3RbhZ2t1UFi292s',
+            'authorization': currentAccount,
             'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.159 Safari/537.36',
             'origin': 'https://marketplace.plantvsundead.com'
         }
@@ -596,7 +620,7 @@ const startWatering = async (plantsNeedWater, chatId) => {
                     method: 'post',
                     body: JSON.stringify(body),
                     headers: {
-                        'authorization': 'Bearer Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwdWJsaWNBZGRyZXNzIjoiMHg1N2I1MTk0NjhhMjUzYzhhZmI3ZDUyZTc0ZTc1NzJmMjlmMTk0NzU4IiwibG9naW5UaW1lIjoxNjI5NTMwNjAyMzM5LCJjcmVhdGVEYXRlIjoiMjAyMS0wOC0xNSAwOTozNzoxMyIsImlhdCI6MTYyOTUzMDYwMn0.EO_tnfvY6vZXkMxHCcu8UntXmNAq3RbhZ2t1UFi292s',
+                        'authorization': currentAccount,
                         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.159 Safari/537.36',
                         'origin': 'https://marketplace.plantvsundead.com',
                         'Accept': '*/*',
@@ -638,7 +662,7 @@ const useScareCrow = async (plantsHasCrow, chatId) => {
             method: 'post',
             body: JSON.stringify(body),
             headers: {
-                'authorization': 'Bearer Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwdWJsaWNBZGRyZXNzIjoiMHg1N2I1MTk0NjhhMjUzYzhhZmI3ZDUyZTc0ZTc1NzJmMjlmMTk0NzU4IiwibG9naW5UaW1lIjoxNjI5NTMwNjAyMzM5LCJjcmVhdGVEYXRlIjoiMjAyMS0wOC0xNSAwOTozNzoxMyIsImlhdCI6MTYyOTUzMDYwMn0.EO_tnfvY6vZXkMxHCcu8UntXmNAq3RbhZ2t1UFi292s',
+                'authorization': currentAccount,
                 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.159 Safari/537.36',
                 'origin': 'https://marketplace.plantvsundead.com',
                 'Accept': '*/*',
