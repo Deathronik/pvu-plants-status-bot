@@ -522,7 +522,7 @@ bot.onText(/\/moreInfo/, async (msg) => {
     const chatId = msg.chat.id;
 
     const plantsJson = await getPlantsStatus()
-    console.log(plantsJson)
+
     if (plantsJson.status === 444) {
         console.log('Farm Maintenance')
         bot.sendMessage(chatId, 'Не в вайтлисте, ожидайте свою группу\n\nУзнать свою группу /getgroup')
