@@ -9,6 +9,7 @@ let currentAccount = accountsTokens[0]
 
 const PVU_PLANTS_STATUS_LINK = 'https://backend-farm.plantvsundead.com/farms?limit=10&offset=0'
 const PVU_WATERING_LINK = 'https://backend-farm-stg.plantvsundead.com/farms/apply-tool'
+const PVU_GROUP_LINK = 'https://backend-farm-stg.plantvsundead.com/farm-status'
 const token = '1954705823:AAEQKOd3875K9obwfmpO3xtmoLhui9A-MCs';
 const bot = new TelegramBot(token, {polling: true});
 
@@ -521,9 +522,11 @@ bot.onText(/\/moreInfo/, async (msg) => {
     const chatId = msg.chat.id;
 
     const plantsJson = await getPlantsStatus()
+    console.log(plantsJson)
     if (plantsJson.status === 444) {
         console.log('Farm Maintenance')
-        bot.sendMessage(chatId, 'Farm Maintenance. Please wait your group')
+        bot.sendMessage(chatId, 'Не в вайтлисте, ожидайте свою группу\n\nУзнать свою группу /getgroup')
+        // bot.sendMessage(chatId, `Не в вайтлисте, ожидайте свою группу\n\nТекущая группа: ${plantsJson.data.currentGroup}\nВаша группа: ${plantsJson.data.inGroup}`)
     } else if (plantsJson.status === 0) {
         showPlantsStatus(plantsJson, chatId)
     } else {
@@ -540,7 +543,7 @@ bot.onText(/\/status/, async (msg) => {
     const plantsJson = await getPlantsStatus()
     if (plantsJson.status === 444) {
         console.log('Farm Maintenance')
-        bot.sendMessage(chatId, 'Farm Maintenance. Please wait your group')
+        bot.sendMessage(chatId, 'Не в вайтлисте, ожидайте свою группу\n\nУзнать свою группу /getgroup')
     } else if (plantsJson.status === 0) {
         showGlobalStatus(plantsJson, chatId)
     } else {
@@ -554,7 +557,7 @@ bot.onText(/\/watering/, async (msg) => {
     const plantsJson = await getPlantsStatus()
     if (plantsJson.status === 444) {
         console.log('Farm Maintenance')
-        bot.sendMessage(chatId, 'Farm Maintenance. Please wait your group')
+        bot.sendMessage(chatId, 'Не в вайтлисте, ожидайте свою группу\n\nУзнать свою группу /getgroup')
     } else if (plantsJson.status === 0) {
         startWatering(plantsNeedWater, chatId)
     } else {
@@ -568,11 +571,22 @@ bot.onText(/\/scarecrow/, async (msg) => {
     const plantsJson = await getPlantsStatus()
     if (plantsJson.status === 444) {
         console.log('Farm Maintenance')
-        bot.sendMessage(chatId, 'Farm Maintenance. Please wait your group')
+        bot.sendMessage(chatId, 'Не в вайтлисте, ожидайте свою группу')
     } else if (plantsJson.status === 0) {
         useScareCrow(plantsHasCrow, chatId)
     } else {
         bot.sendMessage(chatId, `Ошибка, код: ${plantsJson.status}`)
+    }
+});
+
+bot.onText(/\/getgroup/, async (msg) => {
+    const chatId = msg.chat.id;
+
+    const groupJson = await getGroupStatus()
+    if (groupJson.status === 0) {
+        bot.sendMessage(chatId, `Текущая группа: ${groupJson.data.currentGroup}\nВаша группа: ${groupJson.data.inGroup}\n\nВаша группа будет ${diffTimeCalculation(groupJson.data.nextGroup)}`)
+    } else {
+        bot.sendMessage(chatId, `Ошибка, код: ${groupJson.status}`)
     }
 });
 
@@ -588,10 +602,22 @@ const getPlantsStatus = async () => {
     return response.json()
 }
 
+const getGroupStatus = async () => {
+    const response = await fetch(PVU_GROUP_LINK, {
+        headers: {
+            'authorization': currentAccount,
+            'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.159 Safari/537.36',
+            'origin': 'https://marketplace.plantvsundead.com'
+        }
+    })
+
+    return response.json()
+}
+
 const diffTimeCalculation = (endTime) => {
-    let now = moment(new Date())
+    moment.locale('ru-RU')
     let end = moment(endTime)
-    let diffTime = end.from(now)
+    let diffTime = end.fromNow()
     return diffTime
 }
 
@@ -710,6 +736,6 @@ const showGlobalStatus = (plantJson, chatId) => {
         }
     })
 
-    bot.sendMessage(chatId, `Нужно полить: ${needWater}${needWater !== 0 ? ', Полить /watering' : ''}\nС воронами: ${hasCrow}${hasCrow !== 0 ? ', Согнать /scarecrow' : ''}\nГотовых к сбору: ${needHarvest}\n\nДля подробной информации выполните команду /moreInfo`)
+    bot.sendMessage(chatId, `Нужно полить: ${needWater}${needWater !== 0 ? ', Полить /watering' : ''}\nС воронами: ${hasCrow}${hasCrow !== 0 ? ', Согнать /scarecrow' : ''}\nГотовых к сбору: ${needHarvest}\n\nДля подробной информации выполните команду /moreInfo\nЧтобы узнать группу выполните команду /getgroup`)
 }
 
