@@ -526,7 +526,6 @@ bot.onText(/\/moreInfo/, async (msg) => {
     if (plantsJson.status === 444) {
         console.log('Farm Maintenance')
         bot.sendMessage(chatId, 'Не в вайтлисте, ожидайте свою группу\n\nУзнать свою группу /getgroup')
-        // bot.sendMessage(chatId, `Не в вайтлисте, ожидайте свою группу\n\nТекущая группа: ${plantsJson.data.currentGroup}\nВаша группа: ${plantsJson.data.inGroup}`)
     } else if (plantsJson.status === 0) {
         showPlantsStatus(plantsJson, chatId)
     } else {
