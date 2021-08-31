@@ -488,6 +488,8 @@ const testResponse = {
 let plantsNeedWater = []
 let plantsHasCrow = []
 
+moment.locale('ru-RU')
+
 console.log('Bot Start')
 
 bot.onText(/\/start/, (msg) => {
@@ -614,7 +616,6 @@ const getGroupStatus = async () => {
 }
 
 const diffTimeCalculation = (endTime) => {
-    moment.locale('ru-RU')
     let end = moment(endTime)
     let diffTime = end.fromNow()
     return diffTime
