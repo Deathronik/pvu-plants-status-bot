@@ -9,7 +9,7 @@ let currentAccount = accountsTokens[0]
 
 const PVU_PLANTS_STATUS_LINK = 'https://backend-farm-stg.plantvsundead.com/farms?limit=10&offset=0'
 const PVU_WATERING_LINK = 'https://backend-farm-stg.plantvsundead.com/farms/apply-tool'
-const PVU_GROUP_LINK = 'https://backend-farm-stg.plantvsundead.com/farm-status'
+const PVU_GROUP_LINK = 'https://backend-farm.plantvsundead.com/farm-status'
 const token = '1954705823:AAEQKOd3875K9obwfmpO3xtmoLhui9A-MCs';
 const bot = new TelegramBot(token, {polling: true});
 
