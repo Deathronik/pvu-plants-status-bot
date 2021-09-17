@@ -597,7 +597,7 @@ bot.onText(/\/worldtree/, async (msg) => {
 
     const treeJson = await getTreeStatus()
     if (treeJson.status === 0) {
-        bot.sendMessage(chatId, `Количество поливов: ${treeJson.data.totalWater}\nУровень награды: ${treeJson.data.level}\n${treeJson.data.yesterdayReward && 'Можно собрать награду за прошлый день'}`)
+        bot.sendMessage(chatId, `Количество поливов: ${treeJson.data.totalWater}\nУровень награды: ${treeJson.data.level}\n${treeJson.data.yesterdayReward === true ? 'Можно собрать награду за прошлый день' : ''}`)
     } else {
         bot.sendMessage(chatId, `Не в вайтлисте, ожидайте свою группу`)
     }
