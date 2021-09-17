@@ -8,8 +8,9 @@ const accountsTokens = ['Bearer Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJw
 let currentAccount = accountsTokens[0]
 
 const PVU_PLANTS_STATUS_LINK = 'https://backend-farm-stg.plantvsundead.com/farms?limit=10&offset=0'
-const PVU_WATERING_LINK = 'https://backend-farm-stg.plantvsundead.com/farms/apply-tool'
+const PVU_TOOL_LINK = 'https://backend-farm-stg.plantvsundead.com/farms/apply-tool'
 const PVU_GROUP_LINK = 'https://backend-farm.plantvsundead.com/farm-status'
+const PVU_WORLDTREE_STATUS_LINK = 'https://backend-farm.plantvsundead.com/world-tree/datas'
 const token = '1954705823:AAEQKOd3875K9obwfmpO3xtmoLhui9A-MCs';
 const bot = new TelegramBot(token, {polling: true});
 
@@ -527,7 +528,7 @@ bot.onText(/\/moreInfo/, async (msg) => {
 
     if (plantsJson.status === 444) {
         console.log('Farm Maintenance')
-        bot.sendMessage(chatId, 'Не в вайтлисте, ожидайте свою группу\n\nУзнать свою группу /getgroup')
+        bot.sendMessage(chatId, 'Не в вайтлисте, ожидайте свою группу\n\nУзнать свою группу /getgroup\nПолучить статус дерева /worldtree')
     } else if (plantsJson.status === 0) {
         showPlantsStatus(plantsJson, chatId)
     } else {
@@ -544,7 +545,7 @@ bot.onText(/\/status/, async (msg) => {
     const plantsJson = await getPlantsStatus()
     if (plantsJson.status === 444) {
         console.log('Farm Maintenance')
-        bot.sendMessage(chatId, 'Не в вайтлисте, ожидайте свою группу\n\nУзнать свою группу /getgroup')
+        bot.sendMessage(chatId, 'Не в вайтлисте, ожидайте свою группу\n\nУзнать свою группу /getgroup\nПолучить статус дерева /worldtree')
     } else if (plantsJson.status === 0) {
         showGlobalStatus(plantsJson, chatId)
     } else {
@@ -558,7 +559,7 @@ bot.onText(/\/watering/, async (msg) => {
     const plantsJson = await getPlantsStatus()
     if (plantsJson.status === 444) {
         console.log('Farm Maintenance')
-        bot.sendMessage(chatId, 'Не в вайтлисте, ожидайте свою группу\n\nУзнать свою группу /getgroup')
+        bot.sendMessage(chatId, 'Не в вайтлисте, ожидайте свою группу\n\nУзнать свою группу /getgroup\nПолучить статус дерева /worldtree')
     } else if (plantsJson.status === 0) {
         startWatering(plantsNeedWater, chatId)
     } else {
@@ -588,6 +589,17 @@ bot.onText(/\/getgroup/, async (msg) => {
         bot.sendMessage(chatId, `Текущая группа: ${groupJson.data.currentGroup}\nВаша группа: ${groupJson.data.inGroup}\n\nВаша группа будет ${diffTimeCalculation(groupJson.data.nextGroup)}`)
     } else {
         bot.sendMessage(chatId, `Ошибка, код: ${groupJson.status}`)
+    }
+});
+
+bot.onText(/\/worldtree/, async (msg) => {
+    const chatId = msg.chat.id;
+
+    const treeJson = await getTreeStatus()
+    if (treeJson.status === 0) {
+        bot.sendMessage(chatId, `Количество поливов: ${treeJson.data.totalWater}\nУровень награды: ${treeJson.data.level}\n${treeJson.data.yesterdayReward && 'Можно собрать награду за прошлый день'}`)
+    } else {
+        bot.sendMessage(chatId, `Не в вайтлисте, ожидайте свою группу`)
     }
 });
 
@@ -648,7 +660,7 @@ const startWatering = async (plantsNeedWater, chatId) => {
             let count = 0;
 
             try {
-                await fetch(PVU_WATERING_LINK, {
+                await fetch(PVU_TOOL_LINK, {
                     method: 'post',
                     body: JSON.stringify(body),
                     headers: {
@@ -690,7 +702,7 @@ const useScareCrow = async (plantsHasCrow, chatId) => {
                 "validate": "default"
             }
         }
-        await fetch(PVU_WATERING_LINK, {
+        await fetch(PVU_TOOL_LINK, {
             method: 'post',
             body: JSON.stringify(body),
             headers: {
@@ -737,5 +749,17 @@ const showGlobalStatus = (plantJson, chatId) => {
     })
 
     bot.sendMessage(chatId, `Нужно полить: ${needWater}${needWater !== 0 ? ', Полить /watering' : ''}\nС воронами: ${hasCrow}${hasCrow !== 0 ? ', Согнать /scarecrow' : ''}\nГотовых к сбору: ${needHarvest}\n\nДля подробной информации выполните команду /moreInfo\nЧтобы узнать группу выполните команду /getgroup`)
+}
+
+const getTreeStatus = async (chatId) => {
+    const response = await fetch(PVU_WORLDTREE_STATUS_LINK, {
+        headers: {
+            'authorization': currentAccount,
+            'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.159 Safari/537.36',
+            'origin': 'https://marketplace.plantvsundead.com'
+        }
+    })
+
+    return response.json()
 }
 
